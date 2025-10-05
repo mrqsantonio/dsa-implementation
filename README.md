@@ -1,5 +1,7 @@
 # Cybersecurity - DSA (Implementation & Attacks)
 
+![Python](https://img.shields.io/badge/python-3.10-blue.svg)
+[![License](https://img.shields.io/badge/license-GPL--2.0-blue.svg)](LICENSE)
 
 
 ## Summary

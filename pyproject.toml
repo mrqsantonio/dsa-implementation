@@ -1,0 +1,14 @@
+[project]
+name = "dsa digital signature"
+version = "1.0.0"
+description = "A DSA implementation with attack's example"
+authors = [
+    { name = "Antonio Marques", email = "a48276@alunos.isel.pt" },
+    { name = "Danilo Vieira", email = "a49988@alunos.isel.pt" }
+]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

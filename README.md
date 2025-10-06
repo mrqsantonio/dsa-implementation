@@ -36,18 +36,18 @@ This is an educational project in the context of the cybersecurity course @ISEL,
 
 # Project Structure
 
-- pyproject.toml                    # General project information
+- pyproject.toml                    - General project information
 - src
-    - dsa.py                        # DSA implementation
-    - attacks.py                    # Attacks implementation
+    - dsa.py                        - DSA implementation
+    - attacks.py                    - Attacks implementation
     - utils
-        - dsa_utils.py              # DSA support functions
+        - dsa_utils.py              - DSA support functions
 - tests
-    - test_dsa.py                   # Test DSA implementation
-    - test_dsa_utils.py             # Test DSA support functions
-    - test_attacks.py               # Test attacks implementation
+    - test_dsa.py                   - Test DSA implementation
+    - test_dsa_utils.py             - Test DSA support functions
+    - test_attacks.py               - Test attacks implementation
     - metrics
-        - test_attack_metrics.py   # Generates metrics of the DSA Attacks
+        - test_attack_metrics.py   - Generates metrics for the brute force attack
 
 
 ---
@@ -134,14 +134,14 @@ The current implementation takes in mind the following constrains:
 ## Install dependencies
 
 ### On Windows
-```cmd
+```
 python -m venv .venv
 .venv\Scripts\activate.bat
 pip install -r requirements.txt
 ```
 
 ### On Linux / macOS
-```bash
+```
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -153,7 +153,7 @@ pip install -r requirements.txt
 
 Run unit tests with pytest:
 
-```bash
+```
 pytest --cov=src --cov-report=term-missing
 ```
 

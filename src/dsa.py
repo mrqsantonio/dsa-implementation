@@ -1,19 +1,20 @@
-from utils.dsa_utils.py import get_prime_dividers
+from sympy import randprime
+from utils.dsa_utils import get_prime_dividers, get_random_element
 
-
+# Exercise 1
+# This function i
 def get_DSAparameters(n): 
     if(n <3): 
         raise Exception("get_DSAparameters only work with numbers above 2")
     p = randprime(pow(2,n-1), pow(2,n))
-    listOfPossibleQs = get_prime_dividers(p-1)
-    qIdx = random.randint(0,len(listOfPossibleQs)-1)
-    q = listOfPossibleQs[qIdx]
-    h = random.randint(1,p-1)
-    g = pow(h,(p-1)/q) % p
+    q_candidates = get_prime_dividers(p - 1)
+    q = get_random_element(q_candidates)
+
+    g = 1
     while(g ==1):
-        h = random.randint(1,p-1)
-        g = pow(h,(p-1)/q) % p
-    return p,q,g
+        h = get_random_element(range(1, p - 1))
+        g = pow(h,(p - 1) / q) % p
+    return p, q, g
 
 def  get_skeys(p, q, g):
     x = random.randint(1,q-1)
@@ -54,4 +55,3 @@ def get_private_key(y,g,p):
     while(y != (pow(g,x)%p)):
         x+=1
     return x
-

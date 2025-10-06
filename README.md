@@ -20,6 +20,9 @@ This is an educational project in the context of the cybersecurity course @ISEL,
         - [On Windows](#on-windows)
         - [On Linux / macOS](#on-linux--macos)
 - [Running Tests](#running-tests)
+- [TUI Mode](#tui-mode)
+  - [Running the program](#running-the-program)
+  - [Content](#content)
 - [Attacks](#attacks)
   - [Brute Force](#brute-force)
     - [Algorithm](#algorithm-1)
@@ -152,10 +155,21 @@ pip install -r requirements.txt
 # Running Tests
 
 Run unit tests with pytest:
+`pytest --cov=src --cov-report=term-missing`
 
-```
-pytest --cov=src --cov-report=term-missing
-```
+# TUI Mode
+This project includes a text user interface mode to try the implementation from your console of choice.
+
+## Running the program
+`python src/main.py`
+
+## Content
+The TUI allows to:
+- Create a domain (overrides old domain)
+- Create a session (overrides old session)
+- Sign a message (require a domain and session)
+- Verify a message (require a domain and session)
+- Restore session
 
 # Attacks
 

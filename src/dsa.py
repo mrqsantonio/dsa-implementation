@@ -15,12 +15,12 @@ def get_DSAparameters(n):
     # Calculating h, so that g != 1 mod p
     g = 1
     while(g == 1):
-        h = get_random_element(range(1, p - 1))
+        h = get_random_element(range(1, p - 2))
         g = pow(h, (p - 1) / q) % p # FIXME: this must be congruent with g not equal
     return p, q, g
 
 def get_skeys(p, q, g):
-    x = random.randint(1, q - 1)
+    x = get_random_element(range(2, q - 1))
     y = pow(g, x) % p
     return x, y
 
@@ -37,17 +37,18 @@ def dsa_sign(message, p, q, g, x):
     s = (inverseOfK * (message + xr)) % q
     return r, s
 
+# This function should be removed on code rewrite or moved to dsa_utils
 def inverseOfNModP(n,p):
     phiOfN = p - 1
-    return pow(n,phiOfN - 1) % p
+    return pow(n, phiOfN - 1) % p
 
-def dsa_verify(message,signature,p,q,g,y):
+def dsa_verify(message, signature, p, q, g, y):
     if(signature[0] > 0 and signature[0] < q and 
        signature[1] > 0 and signature[1] < q):
         print("r e s are OK")
     else:
         return False
-    w = inverseOfNModP(signature[1]) % Q
+    w = inverseOfNModP(signature[1], p) % q
     u1 = (message * w) % q
     u2 = (signature[0] * w) % q
     v= ((pow(g, u1 ) * pow(y, u2 )) % p) % q

@@ -23,6 +23,7 @@ The goal is pedagogical: to understand how DSA works (domain parameter generatio
         - [On Windows](#on-windows)
         - [On Linux / macOS](#on-linux--macos)
 - [Tests](#tests)
+- [Metrics](#metrics)
 
 ---
 
@@ -116,7 +117,7 @@ pip install -r requirements.txt
 Run unit tests with pytest:
 
 ```bash
-pytest -q
+pytest --cov=src --cov-report=term-missing
 ```
 
 Tests cover:
@@ -126,3 +127,5 @@ Tests cover:
 * Sign/verify correctness,
 * `get_private_key` on tiny examples,
 * `k` reuse attack recovers the correct `x`.
+
+# Metrics

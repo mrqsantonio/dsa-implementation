@@ -3,6 +3,15 @@ import random
 
 # This function 
 
+def get_multiple_primes(q):
+    result = []
+    for i in range(2, 100):
+        p = q * i + 1
+        if isprime(p):
+            result.append(p)
+    return result
+
+
 def get_prime_dividers(n):
     result = []
     for i in range(1, n):

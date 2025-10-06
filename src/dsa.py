@@ -16,7 +16,7 @@ def get_DSAparameters(n):
     g = 1
     while(g == 1):
         h = get_random_element(range(1, p - 1))
-        g = pow(h, (p - 1) / q) % p
+        g = pow(h, (p - 1) / q) % p # FIXME: this must be congruent with g not equal
     return p, q, g
 
 def get_skeys(p, q, g):

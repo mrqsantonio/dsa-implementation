@@ -1,4 +1,5 @@
 from dsa import *
+from attacks import *
 
 class LeavingException(Exception):
     pass
@@ -71,6 +72,25 @@ def verify_message():
     else:
         print("This signature isn't valid.")
 
+def brute_force_atack():
+    y = get_input("y")
+    g = get_input("g")
+    p = get_input("p")
+    print("Calculating private Key...")
+    x = get_private_key(y,g,p)
+    print(f"Your Private Key: '{x}' found with y= '{y}',g= '{g}', p ='{p}'")
+    
+def key_repeticion_atack():
+    m1 = get_input("message 1")
+    m2 = get_input("message 2")
+    q = get_input("prime q")
+    r = get_input("first field of the signature with is the same in both messages")
+    s1 = get_input("second field of the signature of the first message")
+    s2 = get_input("second field of the signature of the first message")
+    print("Breaking private Key...")
+    x = get_private_key_from_k(m1, s1, m2, s2, r, q)
+    print(f"Your Private Key: '{x}' found with m1='{m1}', m2='{m2}', q='{q}', r='{r}', s1='{s1}', s2='{s2}'")
+
 def restore_session():
     global domain_parameters
     global session_keys
@@ -89,8 +109,10 @@ def main():
         "2": "Create session",
         "3": "Sign message",
         "4": "Verify message",
-        "5": "Restore session",
-        "6": "Exit"
+        "5": "Brute force atack",
+        "6": "Key repeticion atack",
+        "7": "Restore session",
+        "8": "Exit"
     }
 
     while True:
@@ -113,8 +135,12 @@ def main():
             elif choice == "4":
                 verify_message()
             elif choice == "5":
-                restore_session()
+                brute_force_atack()
             elif choice == "6":
+                key_repeticion_atack()
+            elif choice == "7":
+                restore_session()
+            elif choice == "8":
                 print("\n")
                 return
             else:

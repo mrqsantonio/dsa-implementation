@@ -1,26 +1,25 @@
 from sympy import isprime
 import random
 
-# This function 
-
 def get_multiple_primes(q):
     result = []
-    i = 0
-    while(len(result) < 3):
+    for i in range(2, 10):
         p = q * i + 1
         if isprime(p):
             result.append(p)
-    return result
-
-
-def get_prime_dividers(n):
-    result = []
-    for i in range(1, n):
-        if n % i == 0 and isprime(i):
-            result.append(i)
     return result
 
 def get_random_element(list):
     if len(list) == 0:
         raise Exception("A empty list was found, while at least one value is required.")
     return list[random.randint(0, len(list) - 1)]
+
+# n ^ -1 mod m
+def mod_inverse(n, m):
+    try:
+        i = pow(n, -1, m)
+        if (i * n) % m == 1:
+            return i
+    except ValueError:
+        pass
+    return 0

@@ -25,3 +25,13 @@ def test_get_skeys():
     for i in range(1, p * 100): # Since x is random we are trying to ensure that x is always within ]1, p - 1[
         x, y = get_skeys(p, q, g)
         assert x > 1 and x < q - 1
+
+def test_dsa_sign():
+    message = 13
+    p = 23
+    q = 11
+    g = 196
+    x = 4
+    r, s = dsa_sign(message, p, q, g, x)
+    assert True
+

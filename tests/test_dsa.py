@@ -2,14 +2,13 @@ import pytest
 
 from dsa import *
 
+# Test if a execption is raised if n < 3
 def test_n_out_of_bounds():
     for n in (-1, 0, 1, 2):
         with pytest.raises(Exception) as info:
             get_DSAparameters(n)
 
-# We are geneating a p inside the bit range and expecting q to be inside that range
-# The requirement is q inside the range (is it right?)
-
+# Test if for 2 < n < 5 q as the corresponding number of bits
 def test_number_of_bits():
     max = 5
     for n in range(3, max):
@@ -18,6 +17,7 @@ def test_number_of_bits():
             f"{q} has {(q).bit_length()} bit{'' if q == 1 else 's'} while expecting {n}."
         )
 
+# Test for a known example if 1 < x < p - 1
 def test_get_skeys():
     p = 859
     q = 13
@@ -26,6 +26,7 @@ def test_get_skeys():
         x, y = get_skeys(p, q, g)
         assert x > 1 and x < q - 1
 
+# Test if for a known example sign and verify are sucessful
 def test_dsa_sign_and_verify():
     message = 10
     p = 23
@@ -38,6 +39,7 @@ def test_dsa_sign_and_verify():
     t = dsa_verify(message, signature, p, q, g, y)
     assert t, f"Failed to verify signature with r={r} and s={s}"
 
+# Test if an exception is raised when 0 < r < q or 0 < s < q is not true
 def test_dsa_verify_invalid_parameters():
     message = 10
     p = 23

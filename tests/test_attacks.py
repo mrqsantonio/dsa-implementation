@@ -2,6 +2,7 @@ import pytest
 
 from attacks import get_private_key, get_private_key_from_k
 
+# Test if for a known example the brute force attack works
 def test_get_private_key():
     p = 23                          # small prime
     g = 5                           # generator
@@ -11,6 +12,7 @@ def test_get_private_key():
     x = get_private_key(y, g, p)    # brute force result
     assert x == original_x, f"Expecting x to be {original_x} but got {x}"
 
+# Test if the function handles values of out of bounds by raising an exception
 def test_get_private_key_bounds():
     out_of_bounds_pairs = [
         (17, 5, 0),
@@ -26,6 +28,7 @@ def test_get_private_key_bounds():
             x = get_private_key(pair[0], pair[1], pair[2])
             assert False, f" For {str(pair)} x = {x}."
 
+# Tests if for a know example the key repetition attack works
 def test_get_private_key_from_k():
     x = 7
     m1 = 10

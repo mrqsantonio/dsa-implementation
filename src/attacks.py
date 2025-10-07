@@ -1,15 +1,15 @@
 from utils.dsa_utils import mod_inverse
 
-#Exercise 5
+# Exercise 5
 def get_private_key(y, g, p):
-    if y <= 0 or g <= 0 or p <= 0:
+    if y <= 0 or g <= 0 or p <= 0:  # Ensures that all values are within bounds
         raise Exception("parameters must be postive non zero integers.")
-    x = 2 # 1 < x < q -1
-    y_p = y % p
-    g_x = pow(g, x) % p
-    while(y_p != (g_x)):
-        g_x = g_x * g % p
-        x += 1
+    x = 2                           # 1 < x < q -1
+    y_p = y % p                     
+    g_x = pow(g, x) % p             # g^2 mod p
+    while(y_p != (g_x)):            # y = g^x mod p
+        g_x = g_x * g % p           # calculates g^(x + 1) based on g^x
+        x += 1                      # increment x
     return x
 
 # Exercise 6

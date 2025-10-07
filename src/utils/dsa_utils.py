@@ -3,10 +3,12 @@ import random
 
 def get_multiple_primes(q):
     result = []
-    for i in range(2, 10):
+    i = 2
+    while i < 10 or len(result) < 0:    # Ensures at least one value
         p = q * i + 1
         if isprime(p):
             result.append(p)
+        i += 1
     return result
 
 def get_random_element(list):
@@ -17,9 +19,7 @@ def get_random_element(list):
 # n ^ -1 mod m
 def mod_inverse(n, m):
     try:
-        i = pow(n, -1, m)
-        if (i * n) % m == 1:
-            return i
+        return pow(n, -1, m)                # Calculates inverse of n mod m
     except ValueError:
-        pass
-    return 0
+        pass                                # If n does not has an inverse mod m, returns 0
+    return 0                                # The Caller has the responsability to expect this behaviour

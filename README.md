@@ -184,17 +184,25 @@ This attack is based on trial and error and since the examples used on this atta
 With the expression: 
 - y = g^x (modp) and a 1 < x < q -1, 
 the algorithm is basically testing all possible values of x starting from the lowest to find the private key
-### Example
-to make the metrics more accurate we're using 5 examples:
-### Result
-this were the result's of the examples above:
 ### Metrics
 And by averaging the result's we get:
 
 | bit size of q | avg time |
 |:-----------|:------------|
-| `--input`  | Left aligned |
-| `--output` | Left aligned |
+| 3  | 3.33 us |
+| 4 | 1.93us |
+| 5  | 1.74us |
+| 6 | 3.40us |
+| 7  | 4.86us |
+| 8 | 8.23us |
+| 9  | 14.29us |
+| 10 | 38.44us |
+| 11  | 39.78us |
+| 12 | 0.000114.28us |
+| 13  | 0.000210.10us |
+| 14 | 0.000374.75us |
+| 15  |0.000996.72s |
+| 16 | 0.001846.25us |
 
 
 ## Key repetition
@@ -204,14 +212,3 @@ For the algorithm we know that ephemeral key(k) is repeated in both messages so 
 - s = k^−1 (m + x r )modq,
 we can get to formula for the private Key:
 - x = (s2m1 − s1m2)(r (s1 − s2))−1 modq.
-### Example
-to make the metrics more accurate we're using 5 examples:
-### Result
-this were the result's of the examples above:
-### Metrics
-And by averaging the result's we get:
-
-| bit size of q | avg time |
-|:-----------|:------------|
-| `--input`  | Left aligned |
-| `--output` | Left aligned |

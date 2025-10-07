@@ -5,7 +5,8 @@ import random
 
 def get_multiple_primes(q):
     result = []
-    for i in range(2, 100):
+    i = 0
+    while(len(result) < 3):
         p = q * i + 1
         if isprime(p):
             result.append(p)

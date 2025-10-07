@@ -15,8 +15,8 @@ def get_DSAparameters(n):
     # Calculating h, so that g != 1 mod p
     g = 1
     while(g == 1):
-        h = get_random_element(range(1, p - 2))
-        g = pow(h, (p - 1) / q) % p # FIXME: this must be congruent with g not equal
+        h = get_random_element(range(2, p - 1)) # range é [2,p-1[
+        g = pow(h, (p - 1) / q) # g is equal to h to the power of p-1/q, this way g is congruente and not equal to the formula for it
     return p, q, g
 
 def get_skeys(p, q, g):

@@ -27,6 +27,7 @@ def create_domain_parameters():
             domain_parameters = get_DSAparameters(n)
             session_keys = {}
             print(f"New Domain Paramters generated! {str(domain_parameters)}")
+            break
         except Exception as e:
             print(str(e))
 

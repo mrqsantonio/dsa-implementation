@@ -26,12 +26,34 @@ def test_get_skeys():
         x, y = get_skeys(p, q, g)
         assert x > 1 and x < q - 1
 
-def test_dsa_sign():
-    message = 13
+def test_dsa_sign_and_verify():
+    message = 10
     p = 23
     q = 11
-    g = 196
-    x = 4
+    g = 18
+    x = 3
+    y = 13
     r, s = dsa_sign(message, p, q, g, x)
-    assert True
+    signature = (r, s)
+    t = dsa_verify(message, signature, p, q, g, y)
+    assert t, f"Failed to verify signature with r={r} and s={s}"
 
+def test_dsa_verify_invalid_parameters():
+    message = 10
+    p = 23
+    q = 11
+    g = 18
+    y = 13
+    # r = 0, r = q, s = 0, s = q
+    invalid_parameters = [
+        (0, 10),
+        (q, 10),
+        (5, 0),
+        (5, q),
+        (0, 0),
+        (0, q),
+        (q, q)
+    ]
+    with pytest.raises(Exception) as info:
+        for signature in invalid_parameters:
+            dsa_verify(message, signature, p, q, g, y)

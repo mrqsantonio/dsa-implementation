@@ -30,7 +30,7 @@ def dsa_sign(message, p, q, g, x):
     s = 0
     while(r == 0 or s == 0):
         k = get_random_element(range(2, q - 1))
-        r = pow(g, k) % p
+        r = pow(g, k, p) % q
         k_inverse = mod_inverse(k, q)   # inverse of k mod q
         s = (k_inverse * (message + r * x)) % q
     return r, s
@@ -39,11 +39,12 @@ def dsa_sign(message, p, q, g, x):
 def dsa_verify(message, signature, p, q, g, y):
     r = signature[0]
     s = signature[1]
-    if r < 1 or s < 1:
-        raise Exception("Invalid signature")
-    w = mod_inverse(s, p) % q
+    if r < 1 or r >= q or s < 1 or s >= q:
+        raise Exception("Invalid signature.")
+    w = mod_inverse(s, q)
     u1 = (message * w) % q
     u2 = (r * w) % q
-    v = ((pow(g, u1 ) * pow(y, u2 )) % p) % q
+    v = (pow(g, u1 ) * pow(y, u2 )) % p
+    v %= q
     print(str(v))
     return v == r

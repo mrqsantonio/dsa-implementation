@@ -187,7 +187,7 @@ the algorithm is basically testing all possible values of x starting from the lo
 ### Metrics
 And by averaging the result's we get:
 
-| bit size of q | avg time |
+| n | avg time |
 |:-----------|:------------|
 | 3  | 3.33 us |
 | 4 | 1.93us |
@@ -198,11 +198,11 @@ And by averaging the result's we get:
 | 9  | 14.29us |
 | 10 | 38.44us |
 | 11  | 39.78us |
-| 12 | 0.000114.28us |
-| 13  | 0.000210.10us |
-| 14 | 0.000374.75us |
-| 15  |0.000996.72s |
-| 16 | 0.001846.25us |
+| 12 | 114.28us |
+| 13  | 210.10us |
+| 14 | 374.75us |
+| 15  |996.72us |
+| 16 | 1846.25us |
 
 
 ## Key repetition

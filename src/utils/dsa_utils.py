@@ -4,7 +4,7 @@ import random
 def get_multiple_primes(q):
     result = []
     i = 2
-    while i < 10 or len(result) < 0:    # Ensures at least one value
+    while i < 10 or len(result) < 1:    # Ensures at least one value
         p = q * i + 1
         if isprime(p):
             result.append(p)

@@ -1,3 +1,4 @@
+import time
 from dsa import *
 from attacks import *
 
@@ -91,6 +92,28 @@ def key_repeticion_atack():
     x = get_private_key_from_k(m1, s1, m2, s2, r, q)
     print(f"Your Private Key: '{x}' found with m1='{m1}', m2='{m2}', q='{q}', r='{r}', s1='{s1}', s2='{s2}'")
 
+def calculate_metrics():
+    results = []
+    for n in range(3, 17):
+        print(n)
+        max = 10
+        result = 0
+        for i in range(0, max):
+            print(i)
+            p, q, g = get_DSAparameters(n)
+            x, y = get_skeys(p, q, g)
+            r, s = dsa_sign(i, p, q, g, x)
+            start = time.perf_counter()
+            x_1 = get_private_key(y, g, p)
+            end = time.perf_counter()
+            if x != x_1:
+                print("Brute force attack failed unexpectingly.")
+                return
+            result += end - start
+        results.append((n, result / max))
+    for avg in results:
+        print(f"n={avg[0]} avg={avg[1]}s")
+
 def restore_session():
     global domain_parameters
     global session_keys
@@ -111,8 +134,9 @@ def main():
         "4": "Verify message",
         "5": "Brute force atack",
         "6": "Key repeticion atack",
-        "7": "Restore session",
-        "8": "Exit"
+        "7": "Calculate metrics",
+        "8": "Restore session",
+        "9": "Exit"
     }
 
     while True:
@@ -139,8 +163,10 @@ def main():
             elif choice == "6":
                 key_repeticion_atack()
             elif choice == "7":
-                restore_session()
+                calculate_metrics()
             elif choice == "8":
+                restore_session()
+            elif choice == "9":
                 print("\n")
                 return
             else:

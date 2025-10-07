@@ -14,7 +14,7 @@ def get_DSAparameters(n):
     g = 1
     while(g == 1):                                  # Calculating h, so that g != 1 mod p
         h = get_random_element(range(2, p - 1))     # range é [2,p-1[
-        g = pow(h, (p - 1) / q)                     # g is congruent mod p
+        g = int(pow(h, (p - 1) / q) % p)            # g is congruent mod p
     return p, q, g
 
 # Exercise 2

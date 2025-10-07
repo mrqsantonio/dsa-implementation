@@ -177,7 +177,7 @@ This attack is based on trial and error and since the examples used on this atta
 
 ### Algorithm
 With the expression: 
-- y = g^x (modp) and a 1 < x < q -1, 
+- `y = g^x (modp) and a 1 < x < q -1`, 
 the algorithm is basically testing all possible values of x starting from the lowest to find the private key
 ### Metrics
 And by averaging the result's we get:
@@ -204,6 +204,6 @@ And by averaging the result's we get:
 
 ### Algorithm
 For the algorithm we know that ephemeral key(k) is repeated in both messages so if you look at the way the message is signed: 
-- s = k^−1 (m + x r )modq,
+- `s = k^−1 (m + x r )modq`,
 we can get to formula for the private Key:
-- x = (s2m1 − s1m2)(r (s1 − s2))−1 modq.
+- `x = (s2m1 − s1m2)(r (s1 − s2))−1 modq`.

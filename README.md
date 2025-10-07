@@ -181,19 +181,25 @@ This section consists in the explanation, analisys and execution of this to type
 This attack is based on trial and error and since the examples used on this attack consists on small numbers, the pool of results as an amount that makes fesable (due to time constrains) to calculate all possible values to find the coorect on.
 
 ### Algorithm
-
+with the expression 
+  -y = g^x (modp) and a 1 < x < q -1, 
+the algorithm is basically testing all possible values of x starting from the lowest to find the private key
 ### Example
-
+to make the metrics more accurate we're using 5 examples:
 ### Result
-
+this were the result's of the examples above:
 ### Metrics
-
+And by averaging the result's we get:
 ## Key repetition
 
 ### Algorithm
-
+for the algorithm we know that ephemeral key(k) is repeated in both messages so if you look at the way the message is signed: 
+  -s = k^−1 (m + x r )modq,
+we can get to formula for the private Key:
+  -x = (s2m1 − s1m2)(r (s1 − s2))−1 modq.
 ### Example
-
+to make the metrics more accurate we're using 5 examples:
 ### Result
-
+this were the result's of the examples above:
 ### Metrics
+And by averaging the result's we get:

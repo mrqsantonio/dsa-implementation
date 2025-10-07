@@ -26,14 +26,9 @@ This is an educational project in the context of the cybersecurity course @ISEL,
 - [Attacks](#attacks)
   - [Brute Force](#brute-force)
     - [Algorithm](#algorithm-1)
-    - [Example](#example)
-    - [Result](#result)
     - [Metrics](#metrics)
   - [Key repetition](#key-repetition)
     - [Algorithm](#algorithm-2)
-    - [Example](#example-1)
-    - [Result](#result-1)
-    - [Metrics](#metrics-1)
 
 ---
 

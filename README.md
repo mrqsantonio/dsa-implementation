@@ -190,6 +190,13 @@ to make the metrics more accurate we're using 5 examples:
 this were the result's of the examples above:
 ### Metrics
 And by averaging the result's we get:
+
+| bit size of q | avg time |
+|:-----------|:------------|
+| `--input`  | Left aligned |
+| `--output` | Left aligned |
+
+
 ## Key repetition
 
 ### Algorithm
@@ -203,3 +210,8 @@ to make the metrics more accurate we're using 5 examples:
 this were the result's of the examples above:
 ### Metrics
 And by averaging the result's we get:
+
+| bit size of q | avg time |
+|:-----------|:------------|
+| `--input`  | Left aligned |
+| `--output` | Left aligned |
